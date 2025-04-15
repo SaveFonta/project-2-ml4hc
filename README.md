@@ -26,7 +26,7 @@ A short description of the project.
 │                         the creator's initials, and a short `-` delimited description, e.g.
 │                         `1.0-jqp-initial-data-exploration`.
 │
-├── pyproject.toml     <- Project configuration file with package metadata for 
+├── pyproject.toml     <- Project configuration file with package metadata for
 │                         proj2 and configuration for tools like black
 │
 ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
@@ -49,13 +49,45 @@ A short description of the project.
     │
     ├── features.py             <- Code to create features for modeling
     │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
+    ├── modeling
+    │   ├── __init__.py
+    │   ├── predict.py          <- Code to run model inference with trained models
     │   └── train.py            <- Code to train models
     │
     └── plots.py                <- Code to create visualizations
 ```
 
---------
+---
 
+## 🔧 Dataset Setup & Configuration
+
+To get started, install the required Python packages:
+
+`pip install kagglehub python-dotenv loguru tqdm`
+
+Then, create a `.env` file in the project root (at the same level as `proj2/`) and configure your Kaggle credentials along with a custom cache directory for downloads. You can use the provided `.env.example` as a starting point:
+
+```
+KAGGLE_USERNAME=your_kaggle_username
+KAGGLE_KEY=your_kaggle_api_key
+KAGGLEHUB_CACHE=./data/external/
+```
+
+The dataset download script (`proj2/dataset.py`) is designed to:
+
+- Automatically load credentials from the `.env` file
+- Use kagglehub to download datasets
+- Store downloaded files in the directory defined by `KAGGLEHUB_CACHE`
+- Check if the datasets already exist locally before downloading
+
+By default, it manages the following datasets:
+
+- `data/external/datasets/fedesoriano` – Heart Failure Prediction
+- `data/external/datasets/paultimothymooney` – Chest X-Ray Pneumonia
+
+If these folders are not found, the script will download and extract the datasets into them. This ensures that all team members have a consistent and reproducible environment.
+To run the script, ensure your working directory is the project root, then execute:
+
+`python -m proj2.dataset`
+
+Or, use the provided VSCode launch configuration for convenience.
