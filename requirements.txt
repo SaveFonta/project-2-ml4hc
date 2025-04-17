@@ -4,4 +4,9 @@ python-dotenv
 ruff
 tqdm
 typer
--e .
+pandas
+matplotlib
+seaborn
+scikit-learn
+shap
+tensorflow

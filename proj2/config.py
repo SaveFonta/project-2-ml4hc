@@ -10,11 +10,14 @@ load_dotenv()
 PROJ_ROOT = Path(__file__).resolve().parents[1]
 logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
 
-DATA_DIR = PROJ_ROOT / "data"
+DATA_DIR = PROJ_ROOT / "proj2" / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
 INTERIM_DATA_DIR = DATA_DIR / "interim"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 EXTERNAL_DATA_DIR = DATA_DIR / "external"
+
+HEART_DATA_FILE = DATA_DIR / "external" / "datasets" / "fedesoriano" / "heart-failure-prediction" / "versions" / "1" / "heart.csv"
+
 
 MODELS_DIR = PROJ_ROOT / "models"
 
