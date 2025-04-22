@@ -44,7 +44,11 @@ def get_data_set_loader(image_size=(224, 224), batch_size=32):
         for img, lbl in ds:
             imgs.append(img.numpy())
             labels.append(lbl)
-        np.savez_compressed(out_file, images=np.stack(imgs), labels=np.array(labels))
+        np.savez_compressed(
+            out_file,
+            images=np.stack(imgs),
+            labels=np.array(labels),
+        )
         return out_file
 
     # Check existence of raw files
