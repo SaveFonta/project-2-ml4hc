@@ -1,3 +1,9 @@
+#####################################################################################################
+# * This script downloads datasets from Kaggle using the Kaggle API and stores them in a specified directory.
+# * It uses the `kagglehub` library to handle the downloading process.
+# * The script first loads environment variables from a `.env` file to get the Kaggle credentials.
+####################################################################################################
+
 from pathlib import Path
 from loguru import logger
 from tqdm import tqdm
