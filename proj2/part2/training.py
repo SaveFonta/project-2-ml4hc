@@ -21,6 +21,7 @@ def train_CNN(
     criterion=torch.nn.BCEWithLogitsLoss(),
     num_epochs=10,
     device=None,
+    run_name="",
 ):
 
     # Prepare the directory
@@ -132,7 +133,7 @@ def train_CNN(
 
         # ----- Checkpoint every 5 epochs -----
         if epoch % 5 == 0:
-            ckpt_path = checkpoint_dir / f"checkpoint_epoch_{epoch}.pt"
+            ckpt_path = checkpoint_dir / f"{run_name}_checkpoint_epoch_{epoch}.pt"
             torch.save(
                 {
                     "epoch": epoch,
@@ -144,7 +145,7 @@ def train_CNN(
             print(f"\n🔖 Checkpoint saved: {ckpt_path}")
 
     # ----- Save final model -----
-    final_path = checkpoint_dir / "model_final.pt"
+    final_path = checkpoint_dir / f"{run_name}_model_final.pt"
     torch.save(model.state_dict(), final_path)
     print(f"\n✅ Final model saved: {final_path}")
 

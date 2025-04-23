@@ -8,10 +8,11 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, TensorDataset
 import torch
 import numpy as np
+from proj2.config import PROJ_ROOT
 
-RAW_DIR = Path.cwd().parent.parent / "data" / "raw"
+RAW_DIR = PROJ_ROOT / "data" / "raw"
 BASE_DIR = (
-    Path.cwd().parent.parent
+    PROJ_ROOT
     / "data"
     / "external"
     / "datasets"
