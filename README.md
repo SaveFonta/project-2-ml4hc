@@ -53,6 +53,10 @@ A short description of the project.
     │   ├── __init__.py
     │   ├── predict.py          <- Code to run model inference with trained models
     │   └── train.py            <- Code to train models
+    |
+    ├── part2
+    │   ├── dataloader.py <- Dataset and DataLoader utilities for part 2
+    │   └── training.py <- CNN training loop for part 2
     │
     └── plots.py                <- Code to create visualizations
 ```
@@ -65,13 +69,7 @@ To get started, install the required Python packages:
 
 `pip install kagglehub python-dotenv loguru tqdm`
 
-Then, create a `.env` file in the project root (at the same level as `proj2/`) and configure your Kaggle credentials along with a custom cache directory for downloads. You can use the provided `.env.example` as a starting point:
-
-```
-KAGGLE_USERNAME=your_kaggle_username
-KAGGLE_KEY=your_kaggle_api_key
-KAGGLEHUB_CACHE=./data/external/
-```
+Then, create a `.env` file in the project root (at the same level as `proj2/`) and configure your Kaggle credentials along with a custom cache directory for downloads. You can use the provided `.env.example` as a starting point.
 
 The dataset download script (`proj2/dataset.py`) is designed to:
 
@@ -91,3 +89,21 @@ To run the script, ensure your working directory is the project root, then execu
 `python -m proj2.dataset`
 
 Or, use the provided VSCode launch configuration for convenience.
+
+### 📂 Additional Required Folder: `data/raw`
+
+To support saving preprocessed NumPy datasets (used for faster loading and reproducibility), you must also create the following folder manually:
+
+```
+data/raw/
+```
+
+This folder is used to store compressed `.npz` versions of the processed image data. These files are automatically created the first time you run the dataset loader (see `get_data_set_loader` in `proj2/dataloader.py`) if they do not already exist. The folder is **not versioned in Git** (it's listed in `.gitignore`) to avoid bloating the repository with large files.
+
+**Make sure to create this folder** before running training or visualization scripts that depend on preprocessed data.
+
+You can create it manually or run the following command from the project root:
+
+```bash
+mkdir -p data/raw
+```
