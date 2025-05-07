@@ -67,9 +67,9 @@ A short description of the project.
 
 To get started, install the required Python packages:
 
-`pip install kagglehub python-dotenv loguru tqdm`
+`pip install -r requirements.txt`
 
-Then, create a `.env` file in the project root (at the same level as `proj2/`) and configure your Kaggle credentials along with a custom cache directory for downloads. You can use the provided `.env.example` as a starting point.
+Then, create a `.env` file in the project root (at the same level as `proj2/`) and configure your Kaggle credentials along with a custom cache directory for downloads. You can use the provided `.env.example` as a starting point and include your personal details (more info at [this link](https://www.kaggle.com/docs/api))
 
 The dataset download script (`proj2/dataset.py`) is designed to:
 
@@ -83,27 +83,9 @@ By default, it manages the following datasets:
 - `data/external/datasets/fedesoriano` – Heart Failure Prediction
 - `data/external/datasets/paultimothymooney` – Chest X-Ray Pneumonia
 
-If these folders are not found, the script will download and extract the datasets into them. This ensures that all team members have a consistent and reproducible environment.
-To run the script, ensure your working directory is the project root, then execute:
+If these folders are not found, the script will automatically download them and extract the datasets into them. This ensures that all team members have a consistent and reproducible environment.
+To run this script, ensure your working directory is the project root, then execute:
 
 `python -m proj2.dataset`
 
 Or, use the provided VSCode launch configuration for convenience.
-
-### 📂 Additional Required Folder: `data/raw`
-
-To support saving preprocessed NumPy datasets (used for faster loading and reproducibility), you must also create the following folder manually:
-
-```
-data/raw/
-```
-
-This folder is used to store compressed `.npz` versions of the processed image data. These files are automatically created the first time you run the dataset loader (see `get_data_set_loader` in `proj2/dataloader.py`) if they do not already exist. The folder is **not versioned in Git** (it's listed in `.gitignore`) to avoid bloating the repository with large files.
-
-**Make sure to create this folder** before running training or visualization scripts that depend on preprocessed data.
-
-You can create it manually or run the following command from the project root:
-
-```bash
-mkdir -p data/raw
-```

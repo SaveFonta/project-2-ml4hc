@@ -24,6 +24,12 @@ if not username or not key:
 
 print(f"Authenticated as: {username}")
 
+# Create folder ./data/raw if it doesn't exist, since it's needed for future steps
+raw_dir = Path(__file__).resolve().parent.parent / "data" / "raw"
+if not raw_dir.exists():
+    os.makedirs(raw_dir)
+    print(f"Created directory: {raw_dir}")
+
 base_dir = Path(__file__).resolve().parent.parent / "data" / "external" / "datasets"
 path_1 = base_dir / "fedesoriano"
 path_2 = base_dir / "paultimothymooney"
