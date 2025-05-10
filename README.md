@@ -89,3 +89,29 @@ To run this script, ensure your working directory is the project root, then exec
 `python -m proj2.dataset`
 
 Or, use the provided VSCode launch configuration for convenience.
+
+---
+
+## 🚀 How to Run the Project
+
+This project is organized into two main parts. The first part addresses heart failure prediction based on tabular data, while the second part is about pneunomia prediction from X-Ray images. Follow the instructions below to reproduce the results.
+
+---
+
+### ⚙️ Setup
+
+Install dependencies (recommended via virtual environment):
+
+```
+pip install -r requirements.txt
+```
+---
+
+### 🫀 Running Part 1
+
+After downloading the dataset as described above, just open and run the following notebook:
+📓 `notebooks/part1.ipynb`
+
+---
+
+### 🩻 Running Part 2
